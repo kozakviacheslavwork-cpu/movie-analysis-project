@@ -1,21 +1,34 @@
-# movie-analysis-project
-Python-based analysis of Wikipedia movie datasets using Pandas and Seaborn
+# Movie Data Analysis
 
-# Аналіз даних про фільми з Вікіпедії (Python)
+I combined five decades of Wikipedia movie data and explored how often genres and actors appear in the records.
 
-Цей проект є частиною мого навчання на курсі Data Analytics. Я працював з реальними даними про кіноіндустрію, використовуючи бібліотеки Pandas та Seaborn.
+**Python · Pandas · NumPy · Matplotlib**
 
-## Що я зробив у цьому проекті:
-* **Збір даних:** Об'єднав 5 окремих JSON-файлів (з 1960 по 2000-ні роки) в один великий датасет за допомогою `pd.concat`.
-* **Очистка даних:** Видалив зайві стовпці (посилання, описи) та прибрав рядки з пропусками, щоб дані були точними.
-* **Аналіз жанрів:** Знайшов топ-10 найпопулярніших жанрів і показав, як змінювалася їхня популярність протягом років.
-* **Аналіз акторів:** Визначив найбільш продуктивних акторів за кількістю знятих фільмів.
-* **Візуалізація:** Побудував графіки (Bar charts, Pie charts, Line plots), щоб наочно показати результати аналізу.
+[Open the notebook](Movie_Industry_Analysis.ipynb)
 
-## Які інструменти використовував:
-* **Python** (як основна мова)
-* **Pandas & Numpy** (для обробки таблиць)
-* **Matplotlib & Seaborn** (для побудови графіків)
+## Data and preparation
 
-## Як переглянути:
-Просто відкрий файл `Movie_Industry_Analysis.ipynb` тут на GitHub, щоб побачити мій код та отримані результати.
+The notebook loads the 1960s, 1970s, 1980s, 1990s and 2000s JSON files from [wikipedia-movie-data](https://github.com/prust/wikipedia-movie-data). It keeps titles, years, cast lists and genres, removes rows with missing values, and combines the files into one table.
+
+The saved run contains **10,750 films covering 1960–2009**. Each film can have several genres and actors, so I expand those lists before counting them.
+
+## What I found
+
+- Comedy and Drama have the most genre entries: **3,777** and **3,758**, followed by Action with **1,228**.
+- Gene Hackman has **71** cast credits in this dataset, followed by Robert Duvall with **68** and Robert De Niro with **65**.
+- The notebook plots annual counts for the three leading genres and actors, then compares the top ten actors' credits in the leading genres.
+
+These counts describe this collection. They do not measure audience popularity or box-office success. A film can count toward more than one genre; percentages in the top-ten pie charts refer only to the displayed entries.
+
+## Run it
+
+Use Python 3 and install the dependencies:
+
+```bash
+pip install -r requirements.txt
+jupyter notebook Movie_Industry_Analysis.ipynb
+```
+
+You can also upload the notebook to Google Colab. Run the cells from top to bottom with an internet connection; the notebook downloads the JSON files and writes `movies_data.csv` locally. The source can change, so a new run may differ from the saved outputs.
+
+Educational project completed during GoIT Data Analytics training.
